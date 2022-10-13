@@ -11,7 +11,7 @@ const Todos: React.FC<TodoProps> = (props) => {
 	return (
 		<ul>
 			{ props.items.map((item, index) => (
-				<TodoItem key={item.id} item={item} />
+				<TodoItem key={index} item={item} />
 			))}
 		</ul>
 	);
