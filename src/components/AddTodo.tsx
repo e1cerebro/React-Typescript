@@ -1,10 +1,13 @@
-import React, {useRef} from "react";
+import React, {useRef, useContext} from "react";
+import { TodosContext } from "../store/todos-context";
 
 type AddTodoProps = {
-	onAddTodo: (text: string) => void
+	
 }
 
 const AddTodo:React.FC<AddTodoProps> = (props) => {
+	const todosCtx = useContext(TodosContext);
+
 	const todoInputText = useRef<HTMLInputElement>(null);
 
 	const submitHandler = (event: React.FormEvent) => {
@@ -14,7 +17,7 @@ const AddTodo:React.FC<AddTodoProps> = (props) => {
 
 		if(todoText?.trim().length === 0) return;
 
-		props.onAddTodo(todoText);
+		todosCtx.addTodo(todoText);
 	};
 
 	return (
